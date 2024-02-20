@@ -1,14 +1,16 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Header, Footer
 
-
-class SignContractVerificationApp(App):
+class ContablesSA_Contratos(App):
     """Aplicación para verificar las firmas de contratos."""
 
-    BINDINGS = [("d", "toggle_dark", "Alternar Modo Oscuro")]
+    BINDINGS = [
+        ("d", "toggle_dark", "Alternar modo oscuro"),
+        ("q", "quit", "Finaliza el programa")
+        ]
 
     def compose(self) -> ComposeResult:
-        """Create child widgets for the app."""
+        """Crea widgets hijos para tu aplicación."""
         yield Header()
         yield Footer()
 
@@ -18,5 +20,5 @@ class SignContractVerificationApp(App):
 
 
 if __name__ == "__main__":
-    app = SignContractVerificationApp()
+    app = ContablesSA_Contratos()
     app.run()
