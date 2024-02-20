@@ -1,30 +1,22 @@
-import click
-
-@click.group()
-def app():
-    """Awesome app doing awesome things."""
+from textual.app import App, ComposeResult
+from textual.widgets import Header, Footer
 
 
-@app.command()
-@click.option("--count", default=1, help="How much love you want")
-@click.argument("name")
-def spread(name, count):
-    """Spread the love."""
-    for i in range(count):
-        print(f"{name} loves you ❤️")
+class SignContractVerificationApp(App):
+    """Aplicación para verificar las firmas de contratos."""
 
+    BINDINGS = [("d", "toggle_dark", "Alternar Modo Oscuro")]
 
-@app.command(name="print")
-@click.argument("filepath", metavar="FILE", type=click.Path(exists=True))
-@click.option("--show-meta", default=False, is_flag=True)
-def print_(filepath, show_meta):
-    """Print the file."""
-    if show_meta:
-        print(f"File path: {filepath}")
-        print("-" * 80)
-    with open(filepath, "r") as f:
-        print(f.read())
+    def compose(self) -> ComposeResult:
+        """Create child widgets for the app."""
+        yield Header()
+        yield Footer()
+
+    def action_toggle_dark(self) -> None:
+        """Una acción para cambiar al modo oscuro."""
+        self.dark = not self.dark
 
 
 if __name__ == "__main__":
-    app()
+    app = SignContractVerificationApp()
+    app.run()
