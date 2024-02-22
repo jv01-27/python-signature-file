@@ -1,0 +1,20 @@
+Screen {
+    layout: horizontal;
+}
+
+.box {    
+    width: 1fr;
+    padding: 1;
+}
+
+ActionButton {
+    background: $boost;
+    height: 5;
+    margin: 1;
+    min-width: 10;
+    padding: 1;    
+}
+
+Button {
+    width: 12;
+}
